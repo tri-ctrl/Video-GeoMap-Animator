@@ -4,7 +4,7 @@ Turn your map into an animated map video, right in the browser. Search any place
 
 Map creator by – **Tri Le** · GIS One Mapping Lab
 
-**Live app:** 
+**Live app:** https://tri-ctrl.github.io/Video-GeoMap-Animator/
 
 ## How it works
 
