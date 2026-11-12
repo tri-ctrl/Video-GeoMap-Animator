@@ -3424,7 +3424,7 @@ export function createEditor() {
     for (const k of ['country', 'place', 'date', 'ticker', 'speed', 'color', 'font']) $(`#brand-${k}`).value = b[k] ?? '';
     $('#brand-animate').checked = b.animate !== false;
     $('#brand-opts').hidden = !b.lower;
-    $('#brand-logo-name').textContent = b.logo ? `Using ${b.logoName || 'your logo strip'}` : 'Default logo strip. A wide PNG with transparency works best (e.g. 5000 × 1000).';
+    $('#brand-logo-name').textContent = b.logo ? `Using ${b.logoName || 'your logo strip'}` : 'Using the VTV logo. Upload a wide transparent image to replace the header.';
   }
   $('#brand-box').addEventListener('input', (e) => {
     const el = e.target; const b = project.brand ||= defaultBrand();

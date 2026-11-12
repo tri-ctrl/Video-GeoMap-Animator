@@ -32,7 +32,7 @@ export function loadBrandFonts() {
 let builtIn = null;
 function headerImage(brand) {
   if (brand.logo) { const im = imageFor(brand.logo); return im?.bmp || null; }
-  if (!builtIn) { builtIn = new Image(); builtIn.src = 'assets/brand/header.png'; }
+  if (!builtIn) { builtIn = new Image(); builtIn.src = 'assets/brand/vtv-online-white.svg'; }
   return builtIn.complete && builtIn.naturalWidth ? builtIn : null;
 }
 /** Resolves when the logo strip is ready to draw (for export). */
@@ -58,8 +58,11 @@ export function drawBranding(ctx, brand, frame, unit, t) {
     if (im) {
       const k = clamp(+brand.headerScale || 1, 0.4, 2);
       const iw = im.width || im.naturalWidth, ih = im.height || im.naturalHeight;
-      const dw = w * k, dh = dw * (ih / iw);
-      ctx.drawImage(im, x + (w - dw) / 2, y, dw, dh);
+      // Keep the VTV logo in the upper-left safe area; uploaded strips span the frame.
+      const dw = w * (brand.logo ? 1 : 0.225) * k, dh = dw * (ih / iw);
+      const dx = brand.logo ? (w - dw) / 2 : w * 0.045;
+      const dy = brand.logo ? 0 : w * 0.033;
+      ctx.drawImage(im, x + dx, y + dy, dw, dh);
     }
   }
   if (brand.lower) {
